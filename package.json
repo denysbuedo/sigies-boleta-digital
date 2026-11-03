@@ -1,0 +1,20 @@
+{
+  "name": "sigies-boleta-digital",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter \"./apps/*\" --parallel dev",
+    "build": "pnpm --filter \"./packages/*\" --filter \"./apps/*\" build",
+    "lint": "pnpm --filter \"./packages/*\" --filter \"./apps/*\" lint",
+    "typecheck": "pnpm --filter \"./packages/*\" --filter \"./apps/*\" typecheck",
+    "test": "pnpm --filter \"./apps/*\" test"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

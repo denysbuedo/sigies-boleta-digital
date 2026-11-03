@@ -1,0 +1,10 @@
+{
+  "name": "@sigies/config",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo Config build ready",
+    "lint": "echo Config lint ready",
+    "typecheck": "echo Config typecheck ready"
+  }
+}
