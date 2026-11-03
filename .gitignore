@@ -1,0 +1,33 @@
+# Dependencias y store
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+
+# NestJS y compilaciones
+dist/
+
+# Pruebas y cobertura
+coverage/
+*.lcov
+
+# Variables de entorno y secretos (NUNCA SUBIR)
+.env
+.env*.local
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

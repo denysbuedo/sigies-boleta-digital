@@ -1,0 +1,10 @@
+{
+  "name": "@sigies/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo Contracts build ready",
+    "lint": "echo Contracts lint ready",
+    "typecheck": "echo Contracts typecheck ready"
+  }
+}
