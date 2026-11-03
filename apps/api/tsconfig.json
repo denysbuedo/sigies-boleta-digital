@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import './globals.css';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Portal del Aspirante - SIGIES',
-  description: 'Portal de solicitud de carreras para la Educación Superior',
+  title: 'Portal del Aspirante | MES - Educación Superior',
+  description: 'Portal oficial de consulta y solicitud de carreras universitarias en Cuba',
 };
 
 export default function RootLayout({
@@ -11,9 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body style={{ fontFamily: 'system-ui, sans-serif', margin: 0, padding: '2rem' }}>
-        {children}
+    <html lang="es" className="h-full">
+      <body className="flex min-h-full flex-col bg-slate-50 text-slate-800 antialiased">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
