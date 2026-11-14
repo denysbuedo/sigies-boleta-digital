@@ -1,4 +1,4 @@
-import { University, Career } from '@/types/mes';
+﻿import type { University, Career } from '@/features/universities/types/mes';
 
 export const MOCK_UNIVERSITIES: University[] = [
   {
@@ -164,3 +164,4 @@ export const MOCK_CAREERS_BY_UNI: Record<string, Career[]> = {
     }
   ]
 };
+

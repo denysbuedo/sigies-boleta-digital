@@ -263,6 +263,10 @@ SIGIES_CLIENT_SECRET=
 
 El equipo debe ajustar estas variables al contrato real de los servicios externos. Usar almacén institucional de secretos en producción; no usar `.env` versionado.
 
+### Catálogo MES en la aplicación web
+
+La web consulta el catálogo MES con OAuth 2.0. Las solicitudes de datos protegidos envían `Authorization: Bearer` y `JWT`, usan un timeout configurable (`MES_REQUEST_TIMEOUT_MS`, 4000 ms por defecto) y una caché de 30 segundos. Si la autenticación o el servicio no responden, el catálogo y las fichas disponibles usan los datos locales de demostración para mantener la navegación; la interfaz identifica ese modo y advierte que los datos pueden no estar vigentes. Para desarrollo local, copia `apps/web/.env.example` a `apps/web/.env.local` y configura las variables OAuth. Las credenciales no tienen valores por defecto en el código. Ese archivo está ignorado por Git; no guardes credenciales en el código ni las publiques.
+
 ## 11. Seguridad obligatoria
 
 - Autenticación siguiendo **RFC 9700**, y especificación OIDC verificada si DATYS la ofrece.
