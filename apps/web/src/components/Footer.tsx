@@ -1,36 +1,23 @@
-import React from 'react';
-import { GraduationCap, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight, GraduationCap } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white py-8 text-slate-600 mt-auto">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-[#0B3C73]">
-              <GraduationCap className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900">
-                Portal del Aspirante a la Educación Superior
-              </p>
-              <p className="text-xs text-slate-500">
-                Canal oficial de consulta y solicitud de carreras universitarias | Cuba
-              </p>
-            </div>
+    <footer className="mt-auto border-t border-slate-200 bg-white">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-9 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
+        <div className="flex items-start gap-3">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-mes-50 text-mes-800"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
+          <div>
+            <p className="text-sm font-extrabold text-slate-950">Portal del Aspirante a la Educación Superior</p>
+            <p className="mt-1 max-w-xl text-xs leading-5 text-slate-500">Prototipo de consulta de instituciones universitarias. Los datos de demostración se identifican en el catálogo.</p>
           </div>
-
-          <div className="flex items-center gap-2 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3.5 py-1.5 rounded-full">
-            <ShieldCheck className="h-4 w-4 text-emerald-600" />
-            <span>Sistema oficial del Ministerio de Educación Superior</span>
-          </div>
-
         </div>
-
-        <div className="mt-6 border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
-          © {new Date().getFullYear()} República de Cuba. Todos los derechos reservados.
-        </div>
+        <Link href="https://www.mes.gob.cu/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-mes-800 hover:underline">
+          Sitio del MES <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+        </Link>
+      </div>
+      <div className="border-t border-slate-100 py-4 text-center text-[11px] text-slate-400">
+        © {new Date().getFullYear()} República de Cuba · Prototipo en desarrollo
       </div>
     </footer>
   );
