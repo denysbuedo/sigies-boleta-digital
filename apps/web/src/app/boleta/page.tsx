@@ -442,7 +442,7 @@ export default function BoletaPage() {
                     Oferta de Carreras Disponibles
                   </h2>
                   <p className="text-xs text-slate-500">
-                    Explora las carreras autorizadas y pulsa <strong>"+ Agregar"</strong> para incluirlas en tu boleta.
+                    Explora las carreras autorizadas y pulsa <strong>&quot;+ Agregar&quot;</strong> para incluirlas en tu boleta.
                   </p>
                 </div>
                 <span className="text-xs font-bold text-[#0B3C73] bg-blue-50 px-2.5 py-1 rounded-full self-start sm:self-auto">
