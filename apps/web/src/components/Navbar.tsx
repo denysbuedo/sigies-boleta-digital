@@ -29,12 +29,7 @@ export function Navbar() {
     { href: '/', label: 'Inicio', icon: GraduationCap },
     { href: '/universidades', label: 'Universidades', icon: Building2 },
     { href: '/pregrado', label: 'Pregrado', icon: BookOpen },
-    { 
-      href: '#', 
-      label: 'Mi Boleta', 
-      icon: FileText,
-      badge: 'Próximamente'
-    },
+    { href: '/boleta', label: 'Mi Boleta', icon: FileText },
   ];
 
   const isActive = (href: string) => {
@@ -42,7 +37,6 @@ export function Navbar() {
     return pathname.startsWith(href);
   };
 
-  // Cerrar el menú desplegable al hacer clic afuera
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
@@ -53,7 +47,6 @@ export function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Iniciales del usuario para el avatar (ej: "Denys Pérez" -> "DP")
   const userInitials = user ? `${user.name[0] || ''}${user.lastName[0] || ''}`.toUpperCase() : 'U';
 
   return (
@@ -75,7 +68,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Enlaces de Navegación */}
+        {/* Enlaces de Navegación de Escritorio */}
         <nav className="hidden md:flex items-center gap-1.5">
           {navLinks.map((item) => {
             const Icon = item.icon;
@@ -93,11 +86,6 @@ export function Navbar() {
               >
                 <Icon className={`h-4 w-4 ${active ? 'text-[#0B3C73]' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
-                {item.badge && (
-                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600 border border-slate-200">
-                    {item.badge}
-                  </span>
-                )}
               </Link>
             );
           })}
@@ -108,7 +96,6 @@ export function Navbar() {
           {loading ? (
             <div className="h-10 w-28 animate-pulse rounded-xl bg-slate-100" />
           ) : user ? (
-            /* Menú de Usuario Autenticado */
             <div className="relative" ref={userMenuRef}>
               <button
                 type="button"
@@ -139,7 +126,18 @@ export function Navbar() {
                     </span>
                   </div>
 
-                  <div className="pt-1">
+                  <div className="py-1">
+                    <Link
+                      href="/boleta"
+                      onClick={() => setUserMenuOpen(false)}
+                      className="w-full flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100 transition"
+                    >
+                      <FileText className="h-4 w-4 text-[#0B3C73]" />
+                      <span>Gestionar mi boleta</span>
+                    </Link>
+                  </div>
+
+                  <div className="pt-1 border-t border-slate-100">
                     <button
                       type="button"
                       onClick={() => { setUserMenuOpen(false); logout(); }}
@@ -153,7 +151,6 @@ export function Navbar() {
               )}
             </div>
           ) : (
-            /* Botón de Iniciar Sesión para visitantes */
             <Link
               href="/auth"
               className="flex items-center gap-2 rounded-xl bg-[#0B3C73] px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#082C55] transition active:scale-95"
@@ -164,7 +161,7 @@ export function Navbar() {
           )}
         </div>
 
-        {/* Botón Menú Móvil */}
+        {/* Menú Móvil */}
         <button
           type="button"
           className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100"
@@ -196,11 +193,6 @@ export function Navbar() {
                     <Icon className="h-5 w-5" />
                     <span>{item.label}</span>
                   </div>
-                  {item.badge && (
-                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
-                      {item.badge}
-                    </span>
-                  )}
                 </Link>
               );
             })}
@@ -213,6 +205,14 @@ export function Navbar() {
                   <p className="font-bold text-slate-900">{user.name} {user.lastName}</p>
                   <p className="text-slate-500">{user.identifier}</p>
                 </div>
+                <Link
+                  href="/boleta"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-50 px-4 py-2.5 text-sm font-bold text-[#0B3C73]"
+                >
+                  <FileText className="h-4 w-4" />
+                  <span>Gestionar mi boleta</span>
+                </Link>
                 <button
                   type="button"
                   onClick={() => { setMobileMenuOpen(false); logout(); }}

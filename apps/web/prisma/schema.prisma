@@ -17,5 +17,35 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  boleta       Boleta?
+
   @@map("users")
+}
+
+model Boleta {
+  id          String             @id @default(uuid())
+  userId      String             @unique
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status      String             @default("DRAFT") // DRAFT, SUBMITTED
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  preferences BoletaPreference[]
+
+  @@map("boletas")
+}
+
+model BoletaPreference {
+  id              String   @id @default(uuid())
+  boletaId        String
+  boleta          Boleta   @relation(fields: [boletaId], references: [id], onDelete: Cascade)
+  position        Int      // 1 al 10
+  careerName      String
+  universityName  String
+  universityAbbr  String
+  programType     String
+  createdAt       DateTime @default(now())
+
+  @@unique([boletaId, position])
+  @@map("boleta_preferences")
 }
